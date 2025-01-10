@@ -1,0 +1,15 @@
+.erro-container {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.erro-container h1 {
+    font-size: 2rem;
+    color: #ff0000;
+}
+
+.erro-container p {
+    font-size: 1rem;
+    color: #4b4b4b;
+}

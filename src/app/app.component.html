@@ -1,0 +1,132 @@
+<app-erro *ngIf="!isMobile"></app-erro>
+
+<section class="et-hero-tabs" *ngIf="isMobile">
+  <div class="et-hero-tabs-container" [class.et-hero-tabs-container--top]="isFixed">
+
+    <div class="header">
+      <img src="../assets/logo-baby.png" alt="">
+      <img src="../assets/name-baby.png" alt="">
+      <img src="../assets/baby.png" alt="">
+    </div>
+
+    <div class="menu">
+      <a class="et-hero-tab" href="#tab-es6" (click)="onTabClick($event, 'tab-es6')">Início</a>
+      <a class="et-hero-tab" href="#tab-flexbox" (click)="onTabClick($event, 'tab-flexbox')">Presentes</a>
+      <a class="et-hero-tab" href="#tab-react" (click)="onTabClick($event, 'tab-react')">Informações</a>
+      <a class="et-hero-tab" href="#tab-angular" (click)="onTabClick($event, 'tab-angular')">Presença</a>
+      <a class="et-hero-tab" href="#tab-other" (click)="onTabClick($event, 'tab-other')">Dúvidas</a>
+      <span class="et-hero-tab-slider" [style.width]="sliderWidth" [style.left]="sliderLeft"></span>
+    </div>
+  </div>
+</section>
+
+<div class="et-main" *ngIf="isMobile">
+  <section class="et-slide" id="tab-es6">
+    <div class="top">
+      <img src="../assets/carrinho.png" alt="">
+      <div class="right">
+        <h1>Boas Vindas !!!</h1>
+        <img src="../assets/underline.png" alt="">
+      </div>
+    </div>
+    <div class="bottom">
+      <h3>
+        Olá amigos e familiares!
+      </h3>
+      <p>
+        Esse é o site do Chá do Zyan, agradecemos a todos vocês pelo carinho e estamos muito felizes em
+        compartilhar
+        esse
+        momento com vocês.
+      </p>
+    </div>
+  </section>
+  <section class="et-slide" id="tab-flexbox">
+    <div class="top">
+      <img src="../assets/presente.png" alt="">
+      <div class="right">
+        <h1>Como presentear?</h1>
+        <img src="../assets/underline.png" alt="">
+      </div>
+    </div>
+    <div class="bottom">
+      <p>
+        Ficamos extremamente felizes por ganhar o enxoval de fraldas e muuuuitas roupinhas 🥰
+        Então, estamos pedindo contribuição em Pix ou Dinheiro no valor que vocês puderem enviar para comprarmos
+        o
+        carrinho com
+        bebê conforto e montarmos o quartinho do nosso baby.
+      </p>
+      <div>PIX: danilo25oliveira&#64;gmail.com</div>
+      <div>Nome: Danilo Jesus de Oliveira</div>
+      <div>Banco: Bradesco</div>
+
+    </div>
+  </section>
+  <section class="et-slide" id="tab-react">
+    <div class="top">
+      <img src="../assets/info.png" alt="">
+      <div class="right">
+        <h1>Informações</h1>
+        <img src="../assets/underline.png" alt="">
+      </div>
+    </div>
+    <div class="bottom">
+      <h3>
+        O Chá será realizado no Salão de Festas do Condôminio
+      </h3>
+      <h2>Data: 08/02/2025</h2>
+      <h2>Horário: 13h00 às 17h00</h2>
+      <h2>Endereço: <a href="https://maps.app.goo.gl/cokxohN3XytCJrdG9" target="_blank">Condominio Residencial
+          Flórida</a></h2>
+    </div>
+  </section>
+  <section class="et-slide" id="tab-angular">
+    <div class="top">
+      <img src="../assets/presenca.png" alt="">
+      <div class="right">
+        <h1>Presença</h1>
+        <img src="../assets/underline.png" alt="">
+      </div>
+    </div>
+    <div class="bottom">
+      <h3>
+        Como o salão precisa da lista de convidados (crianças também contam), pedimos que preencham os nomes de
+        todos
+        que virão com você até o dia 31/01/2025!
+      </h3>
+      <div>Atenção: O salão tem capacidade para 50 pessoas.</div>
+      <div>
+        O convite é para você e sua família. Caso queira levar algum amigo/conhecido, por favor, nos consulte
+        para
+        saber se ainda tem vaga
+      </div>
+      <br>
+      <button (click)="openConfirmPresenceDialog()">Confirmar Presença</button>
+    </div>
+  </section>
+  <section class="et-slide" id="tab-other">
+    <div class="top">
+      <img src="../assets/duvida.png" alt="">
+      <div class="right">
+        <h1>Dúvidas?</h1>
+        <img src="../assets/underline.png" alt="">
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="wpp">
+        <a href="https://wa.me/5511953915306" target="_blank">
+          <img src="../assets/wpp.png" alt="WhatsApp">
+        </a>
+        <p>
+          Clique no icone e entre em contato conosco!
+        </p>
+      </div>
+
+      <div class="baby">
+        <img src="../assets/baby.png" alt="">
+        <p>Oooi, eu sou o Zyan! Conto com sua presença. ❤️</p>
+      </div>
+    </div>
+  </section>
+</div>

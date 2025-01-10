@@ -1,0 +1,41 @@
+<form *ngIf="!showSuccess" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Chá do Zyan</h2>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Email:</mat-label>
+        <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Nome:</mat-label>
+        <input matInput formControlName="nome" />
+    </mat-form-field>
+
+    <div formArrayName="agregados">
+        <h3>Você vai acompanhado? Por favor, coloque os nomes de quem vai com você</h3>
+        <div *ngFor="let agregado of agregados.controls; let i = index">
+            <div [formGroupName]="i">
+                <div class="add">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nome Agregado {{i + 1}}:</mat-label>
+                        <input matInput formControlName="nome" />
+                    </mat-form-field>
+
+                    <button *ngIf="i === agregados.controls.length - 1" mat-fab (click)="addAgregado()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn-submit" type="submit" [disabled]="form.invalid">Confirmar Presença</button>
+</form>
+
+<div *ngIf="showSuccess" class="success-message">
+    <h2>{{ successMessage }}</h2>
+    <img src="assets/success.png" alt="Sucesso" />
+
+    <h3>Agradecemos muuuuito por aceitar dividir esse tempinho conosco ❤️❤️❤️</h3>
+
+</div>
