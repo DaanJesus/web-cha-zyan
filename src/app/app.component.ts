@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   currentId: string | null = null;
   sliderWidth = '0px';
   sliderLeft = '0px';
-  private tabContainerHeight = 190;
+  private tabContainerHeight = 160;
 
   ngOnInit(): void {
     this.checkIfMobile();
