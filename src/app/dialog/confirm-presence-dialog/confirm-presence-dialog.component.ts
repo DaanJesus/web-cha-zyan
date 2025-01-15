@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prd';
 
 @Component({
   selector: 'app-confirm-presence-dialog',
