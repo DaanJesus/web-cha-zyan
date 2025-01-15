@@ -2,8 +2,8 @@
     <h2>Chá do Zyan</h2>
 
     <mat-form-field appearance="outline">
-        <mat-label>Email:</mat-label>
-        <input matInput formControlName="email" type="email" />
+        <mat-label>WhatsApp:</mat-label>
+        <input matInput formControlName="whatsapp" type="number" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -18,10 +18,15 @@
                 <div class="add">
                     <mat-form-field appearance="outline">
                         <mat-label>Nome Agregado {{i + 1}}:</mat-label>
-                        <input matInput formControlName="nome" />
+                        <input matInput formControlName="nome"
+                            [ngClass]="{'invalid-input': !agregado.get('nome')?.valid && agregado.get('nome')?.touched}" />
+                        <mat-error *ngIf="agregado.get('nome')?.hasError('required') && agregado.get('nome')?.touched">
+                            Nome é obrigatório.
+                        </mat-error>
                     </mat-form-field>
 
-                    <button *ngIf="i === agregados.controls.length - 1" mat-fab (click)="addAgregado()">
+                    <button *ngIf="i === agregados.controls.length - 1" mat-fab (click)="addAgregado()"
+                        [disabled]="!isLastAgregadoValid()">
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>

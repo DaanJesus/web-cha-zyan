@@ -29,7 +29,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   checkIfMobile(): void {
-    this.isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    this.isMobile = window.innerWidth <= 768 || /Mobi|Android/i.test(navigator.userAgent);
+  }
+
+  @HostListener('window:resize', [])
+  onWindowResize(): void {
+    this.checkIfMobile();
   }
 
   @HostListener('window:scroll', [])

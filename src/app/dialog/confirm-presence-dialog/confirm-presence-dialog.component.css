@@ -62,3 +62,11 @@ form {
     width: 100px;
     height: auto;
 }
+
+.invalid-input {
+    border-color: red;
+}
+
+mat-error {
+    color: red;
+}

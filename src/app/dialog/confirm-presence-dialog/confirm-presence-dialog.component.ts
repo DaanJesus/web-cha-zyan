@@ -23,7 +23,7 @@ export class ConfirmPresenceDialogComponent {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      whatsapp: ['', Validators.required],
       nome: ['', Validators.required],
       agregados: this.fb.array([this.createAgregado()])
     });
@@ -40,23 +40,52 @@ export class ConfirmPresenceDialogComponent {
   }
 
   addAgregado(): void {
-    this.agregados.push(this.createAgregado());
+    const ultimoAgregado = this.agregados.controls[this.agregados.length - 1];
+    const nomeAgregado = ultimoAgregado.get('nome')?.value;
+  
+    if (nomeAgregado && nomeAgregado.trim() !== '') {
+      this.agregados.push(this.createAgregado());
+    }
+  }
+
+  isLastAgregadoValid(): boolean {
+    const ultimoAgregado = this.agregados.controls[this.agregados.length - 1];
+    const nomeAgregado = ultimoAgregado.get('nome')?.value;
+    return nomeAgregado && nomeAgregado.trim() !== '';
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-
-      this.http.post(`${environment.apiUrl}/confirm`, this.form.value).subscribe(
+  
+      const agregadosValidos = this.agregados.value.filter((agregado: { nome: string }) => agregado.nome.trim() !== '');
+  
+      const formData = {
+        ...this.form.value,
+        agregados: agregadosValidos
+      };
+  
+      const whatsapp = this.form.value.whatsapp;
+      const message = `Ooii, sou o(a) ${this.form.value.nome.split(" ")[0]}, e o Zyan com certeza pode contar com a nossa presença! ❤️❤️❤️`;
+  
+      this.http.post(`${environment.apiUrl}/confirm`, formData).subscribe(
         response => {
           console.log('Presença confirmada:', response);
           this.successMessage = 'Presença confirmada com sucesso!';
           this.showSuccess = true;
           this.form.reset();
+  
+          this.sendMessage(whatsapp, message);
         },
         error => {
           console.error('Erro ao confirmar presença:', error);
         }
       );
     }
+  }
+
+  sendMessage(whatsapp: string, message: string): void {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsapp}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
   }
 }
