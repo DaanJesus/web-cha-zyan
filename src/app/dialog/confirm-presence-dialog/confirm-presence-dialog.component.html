@@ -12,12 +12,15 @@
     </mat-form-field>
 
     <div formArrayName="agregados">
-        <h3>Você vai acompanhado? Por favor, coloque os nomes de quem vai com você</h3>
+        <h3>Você vai acompanhado?
+            <br>
+            Por favor, coloque os nomes de quem vai com você
+        </h3>
         <div *ngFor="let agregado of agregados.controls; let i = index">
             <div [formGroupName]="i">
                 <div class="add">
                     <mat-form-field appearance="outline">
-                        <mat-label>Nome Agregado {{i + 1}}:</mat-label>
+                        <mat-label>Pessoinha {{i + 1}}:</mat-label>
                         <input matInput formControlName="nome"
                             [ngClass]="{'invalid-input': !agregado.get('nome')?.valid && agregado.get('nome')?.touched}" />
                         <mat-error *ngIf="agregado.get('nome')?.hasError('required') && agregado.get('nome')?.touched">
