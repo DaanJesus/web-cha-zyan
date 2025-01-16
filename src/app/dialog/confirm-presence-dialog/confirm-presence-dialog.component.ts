@@ -23,7 +23,6 @@ export class ConfirmPresenceDialogComponent {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      whatsapp: ['', Validators.required],
       nome: ['', Validators.required],
       agregados: this.fb.array([this.createAgregado()])
     });
@@ -74,7 +73,7 @@ export class ConfirmPresenceDialogComponent {
           this.showSuccess = true;
           this.form.reset();
   
-          this.sendMessage(whatsapp, message);
+          this.sendMessage(message);
         },
         error => {
           console.error('Erro ao confirmar presença:', error);
@@ -83,9 +82,9 @@ export class ConfirmPresenceDialogComponent {
     }
   }
 
-  sendMessage(whatsapp: string, message: string): void {
+  sendMessage(message: string): void {
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${whatsapp}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/5511953915306?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   }
 }

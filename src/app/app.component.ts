@@ -11,9 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Chá do Zyan';
   constructor(
-    private dialog: MatDialog,
-    private router: Router
-  ) { }
+    private dialog: MatDialog) { }
 
   isMobile: boolean = false;
 
